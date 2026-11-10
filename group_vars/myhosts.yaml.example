@@ -1,0 +1,5 @@
+ansible_user: your_user
+ansible_ssh_private_key_file: /path/to/private/key
+ansible_python_interpreter: /path/to/python
+automation_pubkey: "{{ lookup('file', '/path/to/ansible/pubkey') }}"
+

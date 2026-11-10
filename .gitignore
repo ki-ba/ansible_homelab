@@ -1,0 +1,6 @@
+group_vars/*
+vars/*
+collections/
+inventory.yaml
+!group_vars/myhosts.yaml.example
+

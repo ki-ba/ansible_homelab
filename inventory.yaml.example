@@ -1,0 +1,7 @@
+myhosts:
+  hosts:
+    first-host-name:
+      ansible_host: 192.0.2.1
+    second-host-name:
+      ansible_host: 192.0.2.2
+# ...

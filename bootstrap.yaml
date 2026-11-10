@@ -1,0 +1,22 @@
+- name: SSH configuration
+  become: true
+  hosts: myhosts
+  vars_files:
+    - vars/bootstrap.yaml
+  tasks:
+    - name: Add ansible user
+      ansible.builtin.user:
+        name: ansible
+    - name: Install authorized key
+      ansible.posix.authorized_key:
+        comment: ansible
+        key: "{{ automation_pubkey }}"
+        user: ansible
+    - name: Allow ansible user passwordless sudo
+      ansible.builtin.copy:
+        dest: /etc/sudoers.d/ansible
+        content: "ansible ALL=(ALL:ALL) NOPASSWD: ALL\n"
+        owner: root
+        group: root
+        mode: "0440"
+        validate: "visudo -cf %s"
