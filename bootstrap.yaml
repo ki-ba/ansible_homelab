@@ -3,6 +3,9 @@
   hosts: myhosts
   vars_files:
     - vars/bootstrap.yaml
+  vars:
+    prerequisites_packages:
+      - python3-apt
   tasks:
     - name: Add ansible user
       ansible.builtin.user:
@@ -20,3 +23,9 @@
         group: root
         mode: "0440"
         validate: "visudo -cf %s"
+    - name: Install Ansible pre-requisites
+      ansible.builtin.apt:
+        name: "{{ prerequisites_packages }}"
+        update_cache: true
+        cache_valid_time: 3600
+        state: present

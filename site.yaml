@@ -1,5 +1,8 @@
 - name: My first play
+  become: true
   hosts: myhosts
+  roles:
+    - base
   tasks:
     - name: Ping every host
       ansible.builtin.ping:

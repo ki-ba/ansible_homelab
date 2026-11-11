@@ -1,0 +1,8 @@
+---
+base_packages:
+  - chrony
+  - git
+  - curl
+  - vim
+base_timezone: UTC
+# defaults file for roles/base
