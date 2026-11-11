@@ -1,0 +1,5 @@
+---
+# defaults file for roles/hardening
+hardening_automatic_reboot: true
+hardening_automatic_reboot_time: "04:00"
+hardening_remove_unused_dependencies: true

@@ -1,0 +1,4 @@
+// Managed by Ansible
+Unattended-Upgrade::Automatic-Reboot "{{ hardening_automatic_reboot | lower }}";
+Unattended-Upgrade::Automatic-Reboot-Time "{{ hardening_automatic_reboot_time }}";
+Unattended-Upgrade::Remove-Unused-Dependencies "{{ hardening_remove_unused_dependencies | lower }}";

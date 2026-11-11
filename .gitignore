@@ -1,6 +1,10 @@
 group_vars/*
+!group_vars/myhosts.yaml.example
+
+host_vars/*
+!host_vars/first-host-name.yaml.example
+
 vars/*
 collections/
 inventory.yaml
-!group_vars/myhosts.yaml.example
 

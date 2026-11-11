@@ -1,0 +1,37 @@
+---
+# tasks file for roles/hardening
+- name: Install unattended-upgrades
+  ansible.builtin.apt:
+    name: unattended-upgrades
+    update_cache: true
+    cache_valid_time: 3600
+    state: present
+- name: Apply 20auto-upgrades config
+  ansible.builtin.copy:
+    src: 20auto-upgrades
+    dest: /etc/apt/apt.conf.d/20auto-upgrades
+    owner: root
+    group: root
+    mode: '0644'
+- name: Apply 51unattended-upgrades-local config
+  ansible.builtin.template:
+    src: 51unattended-upgrades-local.j2
+    dest: /etc/apt/apt.conf.d/51unattended-upgrades-local
+    owner: root
+    group: root
+    mode: '0644'
+- name: Create daily upgrade timer override directory
+  ansible.builtin.file:
+    path: /etc/systemd/system/apt-daily-upgrade.timer.d/
+    state: directory
+    owner: root
+    group: root
+    mode: '0755'
+- name: Apply auto reboot config
+  notify: Reload apt-daily-upgrade timer
+  ansible.builtin.copy:
+    src: apt-daily-upgrade-override.conf
+    dest: /etc/systemd/system/apt-daily-upgrade.timer.d/override.conf
+    owner: root
+    group: root
+    mode: '0644'

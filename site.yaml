@@ -3,10 +3,7 @@
   hosts: myhosts
   roles:
     - base
+    - hardening
   tasks:
     - name: Ping every host
       ansible.builtin.ping:
-
-    - name: Print message
-      ansible.builtin.debug:
-        msg: Hello world
