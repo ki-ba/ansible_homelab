@@ -3,3 +3,8 @@
 hardening_automatic_reboot: true
 hardening_automatic_reboot_time: "04:00"
 hardening_remove_unused_dependencies: true
+
+hardening_ssh_allowed_group: sshusers
+
+hardening_ssh_allowed_users:
+  - ansible

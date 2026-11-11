@@ -1,0 +1,16 @@
+# Managed by Ansible
+
+PermitRootLogin no
+PasswordAuthentication no
+KbdInteractiveAuthentication no
+MaxAuthTries 3
+LoginGraceTime 30
+AllowGroups {{ hardening_ssh_allowed_group }}
+X11Forwarding no
+AllowTcpForwarding no
+AllowAgentForwarding no
+MaxSessions 2
+ClientAliveInterval 300
+ClientAliveCountMax 2
+TCPKeepAlive no
+LogLevel VERBOSE
